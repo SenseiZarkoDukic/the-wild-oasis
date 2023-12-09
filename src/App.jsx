@@ -30,6 +30,7 @@ function App() {
       <H1>The Wild Oasis</H1>
       <Button onClick={() => alert("You got checked in!")}>Check in</Button>
       <Button onClick={() => alert("You got checked out!")}>Check out</Button>
+      <Input type="number" placeholder="Number of guests" />
     </div>
   );
 }
