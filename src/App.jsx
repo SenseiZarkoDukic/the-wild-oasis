@@ -14,13 +14,15 @@ const Button = styled.button`
   border-radius: 7px;
   background-color: purple;
   color: white;
+  margin: 20px;
 `;
 
 function App() {
   return (
     <div>
       <H1>The Wild Oasis</H1>
-      <Button>Check in</Button>
+      <Button onClick={() => alert("You got checked in!")}>Check in</Button>
+      <Button onClick={() => alert("You got checked out!")}>Check out</Button>
     </div>
   );
 }
