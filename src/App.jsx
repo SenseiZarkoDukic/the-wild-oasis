@@ -14,7 +14,7 @@ function App() {
     <>
       <GlobalStyles />
       <StyledApp>
-        <Heading type="h1">The Wild Oasis</Heading>
+        <Heading as="h1">The Wild Oasis</Heading>
         <Heading as="h2">Check in and out</Heading>
         <Button onClick={() => alert("You got checked in!")}>Check in</Button>
         <Button onClick={() => alert("You got checked out!")}>Check out</Button>
