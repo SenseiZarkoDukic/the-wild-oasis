@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { IconName } from "react-icons/hi2";
+import { HiOutlineCalendarDays, HiOutlineHome } from "react-icons/hi2";
 
 const NavList = styled.ul`
   display: flex;
@@ -51,9 +51,15 @@ function MainNav() {
   return (
     <nav>
       <NavList>
-        <StyledNavLink to="dashboard">Home</StyledNavLink>
+        <StyledNavLink to="dashboard">
+          <HiOutlineHome />
+          <span>Home</span>
+        </StyledNavLink>
 
-        <StyledNavLink to="bookings">Bookings</StyledNavLink>
+        <StyledNavLink to="bookings">
+          <HiOutlineCalendarDays />
+          <span>Bookings</span>
+        </StyledNavLink>
       </NavList>
     </nav>
   );
