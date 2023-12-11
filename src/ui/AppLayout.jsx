@@ -1,10 +1,15 @@
 import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 
 function AppLayout() {
   return (
     <div>
-      <p>APP LAYOUT</p>
-      <Outlet />
+      <Header />
+      <Sidebar />
+      <main>
+        <Outlet />
+      </main>
     </div>
   );
 }
