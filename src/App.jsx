@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import GlobalStyles from "./styles/GlobalStyles";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
@@ -9,6 +10,14 @@ import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 import Cabins from "./pages/Cabins";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 1000,
+    },
+  },
+});
 
 function App() {
   return (
