@@ -5,7 +5,6 @@ import { useQueryClient } from "@tanstack/react-query";
 import CabinTable from "../features/cabins/CabinTable";
 
 function Cabins() {
-  const cabins = useQueryClient().prefetchQuery("cabins", getCabins);
   return (
     <>
       <Row type="horizontal">
