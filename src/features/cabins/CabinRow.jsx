@@ -1,12 +1,7 @@
 import styled from "styled-components";
 import { formatCurrency } from "../../utils/helpers/";
 import { deleteCabin } from "../../services/apiCabins";
-import {
-  QueryClient,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Spinner from "../../ui/Spinner";
 
 const TableRow = styled.div`
