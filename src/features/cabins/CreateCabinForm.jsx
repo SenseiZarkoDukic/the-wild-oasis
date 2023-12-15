@@ -52,8 +52,8 @@ const Error = styled.span`
 `;
 
 function CreateCabinForm() {
+  const { register, handleSubmit, reset } = useForm();
   const queryClient = useQueryClient();
-  const { register, handleSubmit } = useForm();
 
   function onSubmit(data) {
     mutate(data);
@@ -63,7 +63,8 @@ function CreateCabinForm() {
     mutationFn: createCabin,
     onSuccess: () => {
       toast.success("Cabin successfully created");
-      QueryClient.invalidateQueries({ queryKey: ["cabins"] });
+      queryClient.invalidateQueries({ queryKey: ["cabins"] });
+      reset();
     },
     onError: (err) => toast.error(err.message),
   });
@@ -119,9 +120,7 @@ function CreateCabinForm() {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button onClick={() => onSubmit()} disabled={isCreating}>
-          Edit cabin
-        </Button>
+        <Button disabled={isCreating}>Edit cabin</Button>
       </FormRow>
     </Form>
   );
