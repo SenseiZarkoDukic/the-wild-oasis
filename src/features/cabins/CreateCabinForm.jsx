@@ -59,6 +59,10 @@ function CreateCabinForm() {
     mutate(data);
   }
 
+  function onError(errors) {
+    console.log(errors);
+  }
+
   const { isLoading: isCreating, mutate } = useMutation({
     mutationFn: createCabin,
     onSuccess: () => {
