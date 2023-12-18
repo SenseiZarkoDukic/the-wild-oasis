@@ -74,7 +74,7 @@ function CreateCabinForm() {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow>
         <Label htmlFor="name">Cabin name</Label>
         <Input
