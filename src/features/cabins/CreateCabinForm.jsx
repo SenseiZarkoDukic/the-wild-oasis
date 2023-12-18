@@ -55,14 +55,6 @@ function CreateCabinForm() {
   const { register, handleSubmit, reset } = useForm();
   const queryClient = useQueryClient();
 
-  function onSubmit(data) {
-    mutate(data);
-  }
-
-  function onError(errors) {
-    console.log(errors);
-  }
-
   const { isLoading: isCreating, mutate } = useMutation({
     mutationFn: createCabin,
     onSuccess: () => {
@@ -75,6 +67,14 @@ function CreateCabinForm() {
 
   if (isCreating) {
     return <Spinner />;
+  }
+
+  function onSubmit(data) {
+    mutate(data);
+  }
+
+  function onError(errors) {
+    console.log(errors);
   }
 
   return (
@@ -108,6 +108,10 @@ function CreateCabinForm() {
           id="regularPrice"
           {...register("regularPrice", {
             required: "This field is required",
+            min: {
+              value: 1,
+              message: "Capacity should be at least 1",
+            },
           })}
         />
       </FormRow>
