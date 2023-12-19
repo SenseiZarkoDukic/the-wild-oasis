@@ -126,7 +126,12 @@ function CreateCabinForm() {
           type="number"
           id="discount"
           defaultValue={0}
-          {...register("discount")}
+          {...register("discount", {
+            required: "This field is required",
+
+            validate: (value) =>
+              value > 100 || "Discount should be less than regular price",
+          })}
         />
       </FormRow>
 
