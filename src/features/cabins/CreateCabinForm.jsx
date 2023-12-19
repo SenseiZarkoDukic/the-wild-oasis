@@ -52,7 +52,7 @@ const Error = styled.span`
 `;
 
 function CreateCabinForm() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, getValues } = useForm();
   const queryClient = useQueryClient();
 
   const { isLoading: isCreating, mutate } = useMutation({
