@@ -18,7 +18,7 @@ function CreateCabinForm() {
 
   const queryClient = useQueryClient();
 
-  const { isLoading: isCreating, mutate } = useMutation({
+  const { isPending: isCreating, mutate } = useMutation({
     mutationFn: createCabin,
     onSuccess: () => {
       toast.success("Cabin successfully created");
@@ -31,7 +31,7 @@ function CreateCabinForm() {
   if (isCreating) {
     return <Spinner />;
   }
-
+  console.log(isCreating);
   function onSubmit(data) {
     mutate(data);
   }
@@ -92,7 +92,7 @@ function CreateCabinForm() {
           {...register("discount", {
             required: "This field is required",
             validate: (value) =>
-              value <= getValues().regularPrice ||
+              Number(value) <= Number(getValues().regularPrice) ||
               "Discount should be less than regular price",
           })}
         />
@@ -119,7 +119,7 @@ function CreateCabinForm() {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button $variation="secondary" type="reset">
           Cancel
         </Button>
         <Button disabled={isCreating}>Edit cabin</Button>
