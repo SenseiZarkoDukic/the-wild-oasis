@@ -31,11 +31,8 @@ function CreateCabinForm() {
   if (isCreating) {
     return <Spinner />;
   }
-  console.log(isCreating);
 
   function onSubmit(data) {
-    console.log(data);
-
     mutate({ ...data, image: data.image[0] });
   }
 
