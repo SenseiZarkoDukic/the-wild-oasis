@@ -12,8 +12,10 @@ import Spinner from "../../ui/Spinner";
 import FormRow from "../../ui/FormRow";
 
 function CreateCabinForm({ cabinToEdit = {} }) {
-  const { id: editId, ...ediValues } = cabinToEdit;
-  const { register, handleSubmit, reset, getValues, formState } = useForm();
+  const { id: editId, ...editValues } = cabinToEdit;
+  const { register, handleSubmit, reset, getValues, formState } = useForm({
+    defaultValues: editValues,
+  });
   const { errors } = formState;
 
   console.log(errors);
