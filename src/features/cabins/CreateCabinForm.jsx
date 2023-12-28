@@ -11,7 +11,8 @@ import { createCabin } from "../../services/apiCabins";
 import Spinner from "../../ui/Spinner";
 import FormRow from "../../ui/FormRow";
 
-function CreateCabinForm() {
+function CreateCabinForm({ cabinToEdit = {} }) {
+  const { id: editId, ...ediValues } = cabinToEdit;
   const { register, handleSubmit, reset, getValues, formState } = useForm();
   const { errors } = formState;
 
