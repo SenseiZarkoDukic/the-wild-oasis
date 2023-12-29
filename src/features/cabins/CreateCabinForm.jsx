@@ -7,7 +7,7 @@ import Form from "../../ui/Form";
 import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
-import { createCabin } from "../../services/apiCabins";
+import { createCabin, createEditCabin } from "../../services/apiCabins";
 import Spinner from "../../ui/Spinner";
 import FormRow from "../../ui/FormRow";
 import { is } from "date-fns/locale";
@@ -25,7 +25,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   const queryClient = useQueryClient();
 
   const { isPending: isCreating, mutate } = useMutation({
-    mutationFn: createCabin,
+    mutationFn: createEditCabin,
     onSuccess: () => {
       toast.success("Cabin successfully created");
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
