@@ -25,7 +25,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   const queryClient = useQueryClient();
 
   const { isPending: isCreating, mutate } = useMutation({
-    mutationFn: createEditCabin,
+    mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),
     onSuccess: () => {
       toast.success("Cabin successfully created");
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
@@ -34,12 +34,14 @@ function CreateCabinForm({ cabinToEdit = {} }) {
     onError: (err) => toast.error(err.message),
   });
 
+  const isWorking = isCreating || isEditing;
   if (isCreating) {
     return <Spinner />;
   }
 
   function onSubmit(data) {
-    mutate({ ...data, image: data.image[0] });
+    console.log(data);
+    // mutate({ ...data, image: data.image[0] });
   }
 
   function onError(errors) {
