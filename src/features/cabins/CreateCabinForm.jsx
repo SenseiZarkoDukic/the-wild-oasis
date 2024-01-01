@@ -35,6 +35,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   });
 
   const isWorking = isCreating || isEditing;
+
   if (isCreating) {
     return <Spinner />;
   }
