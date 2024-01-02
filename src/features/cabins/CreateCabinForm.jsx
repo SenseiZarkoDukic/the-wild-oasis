@@ -10,7 +10,7 @@ import Textarea from "../../ui/Textarea";
 import { createEditCabin } from "../../services/apiCabins";
 import Spinner from "../../ui/Spinner";
 import FormRow from "../../ui/FormRow";
-import { is } from "date-fns/locale";
+import { addDays } from "date-fns/locale";
 
 function CreateCabinForm({ cabinToEdit = {} }) {
   const { id: editId, ...editValues } = cabinToEdit;
@@ -24,7 +24,17 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
   const queryClient = useQueryClient();
 
-  const { isPending: isCreating, mutate } = useMutation({
+  const { isPending: isCreating, mutate: creteCabin } = useMutation({
+    mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),
+    onSuccess: () => {
+      toast.success("Cabin successfully created");
+      queryClient.invalidateQueries({ queryKey: ["cabins"] });
+      reset();
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  const { isLoading: isEditing, mutate: editCabin } = useMutation({
     mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),
     onSuccess: () => {
       toast.success("Cabin successfully created");
