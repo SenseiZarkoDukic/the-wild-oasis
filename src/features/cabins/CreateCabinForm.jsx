@@ -10,7 +10,8 @@ import Textarea from "../../ui/Textarea";
 import { createEditCabin } from "../../services/apiCabins";
 import Spinner from "../../ui/Spinner";
 import FormRow from "../../ui/FormRow";
-import { is } from "date-fns/locale";
+
+import { useCreateCabin } from "./useCreateCabin";
 // import { addDays } from "date-fns/locale";
 
 function CreateCabinForm({ cabinToEdit = {} }) {
@@ -22,6 +23,8 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   const { errors } = formState;
 
   console.log(errors);
+
+  const { isCreating, createCabin } = useCreateCabin();
 
   const queryClient = useQueryClient();
 
