@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 
 export function useCreateCabin() {
   const queryClient = useQueryClient();
-  const { reset } = useForm();
 
   const { isPending: isCreating, mutate: createCabin } = useMutation({
     mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),

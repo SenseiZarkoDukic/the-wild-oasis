@@ -50,7 +50,15 @@ function CreateCabinForm({ cabinToEdit = {} }) {
       editCabin({ newCabinData: { ...data, image }, id: editId });
       return;
     }
-    createCabin({ ...data, image });
+    createCabin(
+      { ...data, image },
+      {
+        onSuccess: (data) => {
+          reset();
+        },
+        onError,
+      }
+    );
   }
 
   function onError(errors) {
