@@ -12,6 +12,7 @@ import Spinner from "../../ui/Spinner";
 import FormRow from "../../ui/FormRow";
 
 import { useCreateCabin } from "./useCreateCabin";
+import { useEditCabin } from "./useEditCabin";
 // import { addDays } from "date-fns/locale";
 
 function CreateCabinForm({ cabinToEdit = {} }) {
@@ -26,34 +27,33 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
   const { isCreating, createCabin } = useCreateCabin();
 
+  const { isEditing, editCabin } = useEditCabin();
+
   const isWorking = isCreating || isEditing;
 
-  if (isEditing) {
-    return <Spinner />;
-  }
-
   function onSubmit(data) {
-    const image = typeof data.image === "string" ? data.image : data.image[0];
-    if (isEditSession)
-      editCabin(
-        { newCabinData: { ...data, image }, id: editId },
-        {
-          onSuccess: (data) => {
-            reset();
-          },
-        }
-      );
-    else
-      createCabin(
-        { ...data, image },
-        {
-          onSuccess: (data) => {
-            reset();
-          },
-        }
-      );
+    if (data) {
+      const image = typeof data.image === "string" ? data.image : data.image[0];
+      if (isEditSession)
+        editCabin(
+          { newCabinData: { ...data, image }, id: editId },
+          {
+            onSuccess: (data) => {
+              reset();
+            },
+          }
+        );
+      else
+        createCabin(
+          { newCabinData: { ...data, image } },
+          {
+            onSuccess: (data) => {
+              reset();
+            },
+          }
+        );
+    }
   }
-
   function onError(errors) {
     // console.log(errors);
   }
