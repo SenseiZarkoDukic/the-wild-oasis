@@ -25,27 +25,24 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   const isWorking = isCreating || isEditing;
 
   function onSubmit(data) {
-    if (data) {
-      const image = typeof data.image === "string" ? data.image : data.image[0];
-      if (isEditSession)
-        editCabin(
-          { newCabinData: { ...data, image }, id: editId },
-          {
-            onSuccess: (data) => {
-              reset();
-            },
-          }
-        );
-      else
-        createCabin(
-          { newCabinData: { ...data, image } },
-          {
-            onSuccess: (data) => {
-              reset();
-            },
-          }
-        );
-    }
+    const image = typeof data.image === "string" ? data.image : data.image[0];
+
+    if (isEditSession)
+      editCabin(
+        { newCabinData: { ...data, image }, id: editId },
+        {
+          onSuccess: (data) => {
+            reset();
+          },
+        }
+      );
+    else
+      createCabin(
+        { newCabinData: { ...data, image } },
+        {
+          onSuccess: (data) => reset(),
+        }
+      );
   }
   function onError(errors) {
     // console.log(errors);

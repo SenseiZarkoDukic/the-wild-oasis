@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 export function useCreateCabin() {
   const queryClient = useQueryClient();
 
-  const { isPending: isCreating, mutate: createCabin } = useMutation({
-    mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),
+  const { isLoading: isCreating, mutate: createCabin } = useMutation({
+    mutationFn: createEditCabin,
     onSuccess: () => {
       toast.success("Cabin successfully created");
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
