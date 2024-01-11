@@ -16,14 +16,14 @@ function UpdateSettingsForm() {
     } = {},
   } = useSettings();
 
-  const { isUpdating, updateSettings } = useUpdateSetting();
+  const { isUpdating, updateSetting } = useUpdateSetting();
 
-  if (isUpdating) return <Spinner />;
+  if (isLoading) return <Spinner />;
 
-  function handleUpdate(e, [field]) {
+  function handleUpdate(e, field) {
     const { value } = e.target;
     if (!value) return;
-    updateSettings({ [field]: value });
+    updateSetting({ [field]: value });
   }
 
   return (
@@ -38,13 +38,21 @@ function UpdateSettingsForm() {
         />
       </FormRow>
       <FormRow label="Maximum nights/booking">
-        <Input type="number" id="max-nights" defaultValue={maxBookingLength} />
+        <Input
+          type="number"
+          id="max-nights"
+          defaultValue={maxBookingLength}
+          disabled={isUpdating}
+          onBlur={(e) => handleUpdate(e, "maxBookingLength")}
+        />
       </FormRow>
       <FormRow label="Maximum guests/booking">
         <Input
           type="number"
           id="max-guests"
           defaultValue={maxGuestsPerBooking}
+          disabled={isUpdating}
+          onBlur={(e) => handleUpdate(e, "maxGuestsPerBooking")}
         />
       </FormRow>
       <FormRow label="Breakfast price">
@@ -52,6 +60,8 @@ function UpdateSettingsForm() {
           type="number"
           id="breakfast-price"
           defaultValue={breakfastPrice}
+          disabled={isUpdating}
+          onBlur={(e) => handleUpdate(e, "breakfastPrice")}
         />
       </FormRow>
     </Form>
