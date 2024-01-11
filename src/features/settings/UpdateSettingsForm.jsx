@@ -18,13 +18,13 @@ function UpdateSettingsForm() {
 
   const { isUpdating, updateSettings } = useUpdateSetting();
 
-  function handleUpdate(e) {
+  if (isUpdating) return <Spinner />;
+
+  function handleUpdate(e, [field]) {
     const { value } = e.target;
     if (!value) return;
-    updateSettings({ minBookingLength: value });
+    updateSettings({ [field]: value });
   }
-
-  if (isLoading) return <Spinner />;
 
   return (
     <Form>
@@ -32,6 +32,7 @@ function UpdateSettingsForm() {
         <Input
           type="number"
           id="min-nights"
+          disabled={isUpdating}
           defaultValue={minBookingLength}
           onBlur={(e) => handleUpdate(e, "minBookingLength")}
         />
