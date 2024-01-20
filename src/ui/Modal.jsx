@@ -52,9 +52,11 @@ const Button = styled.button`
 
 function Modal({ children }) {
   return (
-    <StyledModal>
-      <div>{children}</div>
-    </StyledModal>
+    <Overlay>
+      <StyledModal>
+        <div>{children}</div>
+      </StyledModal>
+    </Overlay>
   );
 }
 
