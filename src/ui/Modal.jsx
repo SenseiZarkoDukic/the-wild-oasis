@@ -54,7 +54,9 @@ const Button = styled.button`
 
 const ModalContext = createContext();
 
-function Modal({ children, onClose }) {
+function Modal({ children }) {}
+
+function Window({ children, onClose }) {
   return createPortal(
     <Overlay>
       <StyledModal>
