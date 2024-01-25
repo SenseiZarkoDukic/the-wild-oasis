@@ -105,7 +105,11 @@ function CabinRow({ cabin }) {
               </button>
             </Modal.Open>
             <Modal.Window name="delete-cabin">
-              <ConfirmDelete onConfirm={deleteCabin(cabinId)}></ConfirmDelete>
+              <ConfirmDelete
+                resourceName="cabin"
+                onConfirm={() => deleteCabin(cabinId)}
+                disabled={isDeleting}
+              />
             </Modal.Window>
           </Modal>
         </div>
