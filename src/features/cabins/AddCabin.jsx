@@ -2,6 +2,7 @@ import { useState } from "react";
 import CreateCabinForm from "./CreateCabinForm";
 import Button from "../../ui/Button";
 import Modal from "../../ui/Modal";
+import CabinTable from "./CabinTable";
 
 function AddCabin() {
   return (
@@ -17,7 +18,7 @@ function AddCabin() {
         <Button>Show table</Button>
       </Modal.Open>
       <Modal.Window name="table">
-        <CreateCabinForm />
+        <CabinTable />
       </Modal.Window>
     </Modal>
   );
