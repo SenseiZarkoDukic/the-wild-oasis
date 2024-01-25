@@ -95,7 +95,9 @@ function CabinRow({ cabin }) {
                 <HiPencil />
               </button>
             </Modal.Open>
-
+            <Modal.Window name="cabin-form">
+              <CreateCabinForm cabinToEdit={cabin} />
+            </Modal.Window>
             <Modal.Open opens="delete-cabin">
               <button
                 onClick={() => deleteCabin(cabinId)}
