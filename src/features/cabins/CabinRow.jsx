@@ -91,7 +91,7 @@ function CabinRow({ cabin }) {
 
           <Modal>
             <Modal.Open opens="cabin-form">
-              <button onClick={() => setShowForm((show) => !show)}>
+              <button>
                 <HiPencil />
               </button>
             </Modal.Open>
@@ -106,10 +106,14 @@ function CabinRow({ cabin }) {
                 <HiTrash />
               </button>
             </Modal.Open>
+            <Modal.Window name="delete-cabin">
+              <div>Are you sure you want to delete this cabin?</div>
+              <button onClick={() => deleteCabin(cabinId)}>Yes</button>
+              <button>No</button>
+            </Modal.Window>
           </Modal>
         </div>
       </TableRow>
-      {showForm && <CreateCabinForm cabinToEdit={cabin} />}
     </>
   );
 }
