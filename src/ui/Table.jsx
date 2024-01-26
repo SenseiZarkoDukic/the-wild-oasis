@@ -60,7 +60,13 @@ const Empty = styled.p`
 `;
 
 function Table({ children }) {
-  return <StyledTable>{children}</StyledTable>;
+  return (
+    <>
+      <StyledTable>{children}</StyledTable>
+      <StyledHeader role="row">{children}</StyledHeader>
+      <StyledBody>{children}</StyledBody>
+    </>
+  );
 }
 
 export default Table;
