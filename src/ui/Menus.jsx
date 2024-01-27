@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 const StyledMenu = styled.div`
@@ -64,5 +65,32 @@ const StyledButton = styled.button`
 function Menus({ children }) {
   return <div>{children}</div>;
 }
+
+function Menu({ children }) {
+  return <StyledMenu>{children}</StyledMenu>;
+}
+
+function Toggle({ children }) {
+  return <StyledToggle>{children}</StyledToggle>;
+}
+
+function List({ children, position }) {
+  return (
+    <StyledList position={position}>
+      {React.Children.map(children, (child) =>
+        React.cloneElement(child, { position })
+      )}
+    </StyledList>
+  );
+}
+
+function Item({ children }) {
+  return <StyledButton>{children}</StyledButton>;
+}
+
+Menus.Menu = Menu;
+Menus.Toggle = Toggle;
+Menus.List = List;
+Menus.Item = Item;
 
 export default Menus;

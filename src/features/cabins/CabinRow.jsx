@@ -112,7 +112,18 @@ function CabinRow({ cabin }) {
               />
             </Modal.Window>
           </Modal>
-          <Menus.Menu></Menus.Menu>
+          <Menus.Menu>
+            <Menus.Toggle />
+            <Menus.List>
+              <Menus.Item onClick={handleDuplicate}>Duplicate</Menus.Item>
+              <Menus.Item>
+                <Modal.Open opens="cabin-form">Edit</Modal.Open>
+              </Menus.Item>
+              <Menus.Item>
+                <Modal.Open opens="delete-cabin">Delete</Modal.Open>
+              </Menus.Item>
+            </Menus.List>
+          </Menus.Menu>
         </div>
       </Table.Row>
     </>
