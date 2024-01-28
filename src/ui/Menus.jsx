@@ -1,5 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import styled from "styled-components";
+import { HiEllipsisVertical } from "react-icons/hi2";
 
 const Menu = styled.div`
   display: flex;
@@ -77,13 +78,31 @@ function Menus({ children }) {
 }
 
 function Toggle({ id, children }) {
-  return <StyledToggle>{children}</StyledToggle>;
+  const { openId, close, open } = useContext(MenusContext);
+  const handleClick = () => {
+    if (openId === id) {
+      close();
+    } else {
+      open(id);
+    }
+  };
+  return (
+    <StyledToggle onClick={handleClick}>
+      <HiEllipsisVertical />
+    </StyledToggle>
+  );
 }
 
-function List({ id, children }) {}
+function List({ id, children }) {
+  return <StyledList>{children}</StyledList>;
+}
 
 function Button({ children }) {
-  return <StyledButton>{children}</StyledButton>;
+  return (
+    <li>
+      <StyledButton>{children}</StyledButton>;
+    </li>
+  );
 }
 
 Menus.Menu = Menu;
