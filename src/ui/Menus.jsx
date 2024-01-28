@@ -80,11 +80,7 @@ function Menus({ children }) {
 function Toggle({ id, children }) {
   const { openId, close, open } = useContext(MenusContext);
   const handleClick = () => {
-    if (openId === id) {
-      close();
-    } else {
-      open(id);
-    }
+    openId === "" || openId !== id ? open(id) : close();
   };
   return (
     <StyledToggle onClick={handleClick}>
