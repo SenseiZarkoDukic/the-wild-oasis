@@ -35,8 +35,8 @@ const StyledList = styled.ul`
   box-shadow: var(--shadow-md);
   border-radius: var(--border-radius-md);
 
-  right: ${(props) => props.position.x}px;
-  top: ${(props) => props.position.y}px;
+  right: ${(props) => props.$position.x}px;
+  top: ${(props) => props.$position.y}px;
 `;
 
 const StyledButton = styled.button`
@@ -72,7 +72,7 @@ function Menus({ children }) {
   const open = setOpenId;
 
   return (
-    <MenusContext.Provider value={(openId, close, open)}>
+    <MenusContext.Provider value={{ openId, close, open }}>
       {children}
     </MenusContext.Provider>
   );
@@ -80,9 +80,11 @@ function Menus({ children }) {
 
 function Toggle({ id }) {
   const { openId, close, open } = useContext(MenusContext);
-  const handleClick = () => {
+  function handleClick(e) {
+    const rect = e.target.closest("button").getBoundingClientRect();
+    console.log(rect);
     openId === "" || openId !== id ? open(id) : close();
-  };
+  }
   return (
     <StyledToggle onClick={handleClick}>
       <HiEllipsisVertical />
@@ -95,7 +97,7 @@ function List({ id, children }) {
   if (openId !== id) return null;
 
   return createPortal(
-    <StyledList position={{ x: 20, y: 20 }}>{children}</StyledList>,
+    <StyledList $position={{ x: 20, y: 20 }}>{children}</StyledList>,
     document.body
   );
 }
@@ -103,7 +105,7 @@ function List({ id, children }) {
 function Button({ children }) {
   return (
     <li>
-      <StyledButton>{children}</StyledButton>;
+      <StyledButton>{children}</StyledButton>
     </li>
   );
 }
