@@ -113,8 +113,8 @@ function CabinRow({ cabin }) {
             </Modal.Window>
           </Modal>
           <Menus.Menu>
-            <Menus.Toggle />
-            <Menus.List>
+            <Menus.Toggle id={cabinId} />
+            <Menus.List id={cabinId}>
               <Menus.Item onClick={handleDuplicate}>Duplicate</Menus.Item>
               <Menus.Item>
                 <Modal.Open opens="cabin-form">Edit</Modal.Open>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledMenu = styled.div`
+const Menu = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -66,31 +66,19 @@ function Menus({ children }) {
   return <div>{children}</div>;
 }
 
-function Menu({ children }) {
-  return <StyledMenu>{children}</StyledMenu>;
-}
-
-function Toggle({ children }) {
+function Toggle({ id, children }) {
   return <StyledToggle>{children}</StyledToggle>;
 }
 
-function List({ children, position }) {
-  return (
-    <StyledList position={position}>
-      {React.Children.map(children, (child) =>
-        React.cloneElement(child, { position })
-      )}
-    </StyledList>
-  );
-}
+function List({ id, children }) {}
 
-function Item({ children }) {
+function Button({ children }) {
   return <StyledButton>{children}</StyledButton>;
 }
 
 Menus.Menu = Menu;
 Menus.Toggle = Toggle;
 Menus.List = List;
-Menus.Item = Item;
+Menus.Button = Button;
 
 export default Menus;
