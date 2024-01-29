@@ -86,10 +86,6 @@ function CabinRow({ cabin }) {
           <span>&mdash;</span>
         )}
         <div>
-          <button disabled={isCreating} onClick={handleDuplicate}>
-            <HiSquare2Stack />
-          </button>
-
           <Modal>
             <Modal.Open opens="cabin-form">
               <button>
