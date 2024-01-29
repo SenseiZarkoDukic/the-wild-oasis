@@ -110,10 +110,12 @@ function List({ id, children }) {
   );
 }
 
-function Button({ children }) {
+function Button({ children, icon, onClick }) {
   return (
     <li>
-      <StyledButton>{children}</StyledButton>
+      <StyledButton onClick={onClick}>
+        {children} {icon}
+      </StyledButton>
     </li>
   );
 }
