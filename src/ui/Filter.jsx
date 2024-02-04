@@ -37,8 +37,9 @@ const FilterButton = styled.button`
 function Filter() {
   return (
     <StyledFilter>
-      <FilterButton active>Active</FilterButton>
-      <FilterButton>Archived</FilterButton>
+      <FilterButton active>All</FilterButton>
+      <FilterButton>No discount</FilterButton>
+      <FilterButton>With discount</FilterButton>
     </StyledFilter>
   );
 }
