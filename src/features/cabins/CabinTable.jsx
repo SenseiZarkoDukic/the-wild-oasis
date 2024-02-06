@@ -16,12 +16,14 @@ function CabinTable() {
   const filterValue = searchParams.get("discount") || "all";
 
   let filteredCabins;
+  if (filterValue === "all") {
+    filteredCabins = cabins;
+  }
   if (filterValue === "no-discount") {
     filteredCabins = cabins.filter((cabin) => cabin.discount === 0);
-  } else if (filterValue === "with-discount") {
+  }
+  if (filterValue === "with-discount") {
     filteredCabins = cabins.filter((cabin) => cabin.discount > 0);
-  } else {
-    filteredCabins = cabins;
   }
 
   console.log("filterValue", filterValue);
