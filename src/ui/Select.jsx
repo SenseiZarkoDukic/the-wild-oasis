@@ -15,7 +15,15 @@ const StyledSelect = styled.select`
 `;
 
 function Select({ options, value }) {
-  return <div></div>;
+  return (
+    <StyledSelec value={value}>
+      {options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </StyledSelec>
+  );
 }
 
 export default Select;
