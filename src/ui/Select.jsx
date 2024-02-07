@@ -16,13 +16,13 @@ const StyledSelect = styled.select`
 
 function Select({ options, value }) {
   return (
-    <StyledSelec value={value}>
+    <StyledSelect value={value}>
       {options.map((option) => (
         <option key={option.value} value={option.value}>
           {option.label}
         </option>
       ))}
-    </StyledSelec>
+    </StyledSelect>
   );
 }
 
