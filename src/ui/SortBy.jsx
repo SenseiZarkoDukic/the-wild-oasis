@@ -1,12 +1,12 @@
 import { useSearchParams } from "react-router-dom";
 import Select from "./Select";
 
-function SortBy({ sortField, options }) {
+function SortBy({ options }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentSort = searchParams.get(sortField) || options.at(0).value;
+  const currentSort = searchParams.get("sortBy") || options.at(0).value;
 
   function handleSortChange(e) {
-    searchParams.set(sortField, e.target.value);
+    searchParams.set("sortBy", e.target.value);
     setSearchParams(searchParams);
   }
   return (
