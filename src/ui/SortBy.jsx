@@ -9,7 +9,14 @@ function SortBy({ sortField, options }) {
     searchParams.set(sortField, e.target.value);
     setSearchParams(searchParams);
   }
-  return <Select options={options} type="white" onChange={handleSortChange} />;
+  return (
+    <Select
+      options={options}
+      type="white"
+      value={currentSort}
+      onChange={handleSortChange}
+    />
+  );
 }
 
 export default SortBy;
