@@ -1,7 +1,8 @@
 import Select from "./Select";
 
 function SortBy({ options }) {
-  return <Select options={options} type="white" />;
+  function handleSortChange(e) {}
+  return <Select options={options} type="white" onChange={handleSortChange} />;
 }
 
 export default SortBy;
