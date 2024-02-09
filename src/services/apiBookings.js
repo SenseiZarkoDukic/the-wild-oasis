@@ -2,9 +2,10 @@ import { getToday } from "../utils/helpers";
 import supabase from "./supabase";
 
 export async function getBookings() {
-  const { data, error } = await supabase.from("bookings").select("*");
-  // , cabins(*), guests(*)")
-  // .order("startDate", { ascending: true });
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("*, cabins(*), guests(*)")
+    .order("startDate", { ascending: true });
 
   if (error) {
     console.error(error);
