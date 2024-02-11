@@ -7,7 +7,9 @@ export async function getBookings() {
     .select(
       "id, created_at, startDate, endDate, numNights, numGuests, status, totalPrice, cabins(name), guests(fullName, email)"
     )
-    .order("startDate", { ascending: true });
+    .eq("status", "unconfirmed")
+    .order("startDate", { ascending: true })
+    .gte("totalPrice", 5000);
 
   if (error) {
     console.error(error);
