@@ -15,10 +15,10 @@ export async function getBookings(filter, sortBy) {
 
   // 2) SORT BOOKINGS
 
-  // if (sortBy) {
-  //   const [field, direction] = sortBy.split("-");
-  //   query = query.order(field, { ascending: direction === "asc" });
-  // }
+  if (sortBy) {
+    const [field, direction] = sortBy.split("-");
+    query = query.order(field, { ascending: direction === "asc" });
+  }
 
   const { data, error } = await query;
 
