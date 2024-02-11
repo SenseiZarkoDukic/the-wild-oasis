@@ -11,7 +11,8 @@ export function useBookings() {
   const filter =
     !filterValue || filterValue === "all"
       ? null
-      : { field: "status", value: filterValue };
+      : // { field: "status", value: filterValue};
+        { field: "status", value: 5000, method: "gte" };
   const sortBy = searchParams.get("sortBy");
   const {
     isLoading,
