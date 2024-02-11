@@ -7,6 +7,12 @@ export function useBookings() {
   const [searchParams] = useSearchParams();
 
   const filterValue = searchParams.get("status");
+
+  const filter =
+    !filterValue || filterValue === "all"
+      ? null
+      : { field: "status", value: filterValue };
+  const sortBy = searchParams.get("sortBy");
   const {
     isLoading,
     data: bookings,
