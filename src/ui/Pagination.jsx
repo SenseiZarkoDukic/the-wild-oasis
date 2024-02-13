@@ -64,7 +64,7 @@ function Pagination() {
       <p>
         Showing <span>
           1
-        </span> to <span> 10 </span> of <span>23</span>
+        </span> to <span> 10 </span> of <span>23</span> results 
       </p>
     </StyledPagination>
     
