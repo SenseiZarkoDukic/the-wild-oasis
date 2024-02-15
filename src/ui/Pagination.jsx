@@ -70,6 +70,10 @@ function Pagination() {
           <HiChevronLeft />
           <span>Previous</span>
         </PaginationButton>
+        <PaginationButton>
+          <span>Next</span>
+          <HiChevronRight />
+        </PaginationButton>
       </Buttons>
     </StyledPagination>
   );
