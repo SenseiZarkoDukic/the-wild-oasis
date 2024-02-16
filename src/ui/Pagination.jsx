@@ -60,6 +60,10 @@ const PaginationButton = styled.button`
 `;
 
 function Pagination({ count }) {
+  function nextPage() {}
+
+  function prevPage() {}
+
   return (
     <StyledPagination>
       <p>
