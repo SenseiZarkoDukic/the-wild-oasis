@@ -87,15 +87,22 @@ function Pagination({ count }) {
   return (
     <StyledPagination>
       <p>
-        Showing <span>1</span> to <span> 10 </span> of <span>{count}</span>{" "}
-        results
+        Showing <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> to{" "}
+        <span>
+          {" "}
+          {currentPage === pageCount ? count : currentPage * PAGE_SIZE}{" "}
+        </span>{" "}
+        of <span>{count}</span> results
       </p>
       <Buttons>
         <PaginationButton onClick={prevPage}>
           <HiChevronLeft />
           <span>Previous</span>
         </PaginationButton>
-        <PaginationButton onClick={nextPage}>
+        <PaginationButton
+          onClick={nextPage}
+          disabled={currentPage === pageCount}
+        >
           <span>Next</span>
           <HiChevronRight />
         </PaginationButton>
