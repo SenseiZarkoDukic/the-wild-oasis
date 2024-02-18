@@ -26,8 +26,8 @@ export function useBookings() {
 
   // PRE-FETCHING
   queryClient.prefetchQuery({
-    queryKey: ["bookings", filter, sortBy, page],
-    queryFn: () => getBookings({ filter, sortBy, page }),
+    queryKey: ["bookings", filter, sortBy, page + 1],
+    queryFn: () => getBookings({ filter, sortBy, page: page + 1 }),
   });
   const {
     isLoading,
