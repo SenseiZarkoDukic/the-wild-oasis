@@ -25,7 +25,10 @@ export function useBookings() {
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
   // PRE-FETCHING
-
+  queryClient.prefetchQuery({
+    queryKey: ["bookings", filter, sortBy, page],
+    queryFn: () => getBookings({ filter, sortBy, page }),
+  });
   const {
     isLoading,
     data: { data: bookings, count } = {},
