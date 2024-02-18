@@ -6,6 +6,7 @@ import { useSearchParams } from "react-router-dom";
 export function useBookings() {
   const [searchParams] = useSearchParams();
 
+  // FILTER
   const filterValue = searchParams.get("status");
 
   const filter =
@@ -13,12 +14,16 @@ export function useBookings() {
       ? null
       : { field: "status", value: filterValue };
   // { field: "status", value: 5000, method: "gte" };
+
+  // SORT
   const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
   const [field, direction] = sortByRaw.split("-");
   const sortBy = { field, direction };
 
   // PAGGINATION
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
+
+  // PRE-FETCHING
 
   const {
     isLoading,
