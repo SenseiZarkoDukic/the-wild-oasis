@@ -8,7 +8,7 @@ import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
 import Menus from "../../ui/Menus";
 import { deleteBooking, getBooking } from "../../services/apiBookings";
-import { HiEye, HiPencil, HiTrash } from "react-icons/hi2";
+import { HiArrowDownOnSquare, HiEye, HiPencil, HiTrash } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 
 const Cabin = styled.div`
@@ -97,12 +97,19 @@ function BookingRow({
           >
             See details
           </Menus.Button>
+
           <Menus.Button
+            icon={<HiArrowDownOnSquare />}
+            onClick={() => navigate(`../bookings/${bookingId}`)}
+          >
+            Check in
+          </Menus.Button>
+          {/* <Menus.Button
             icon={<HiTrash />}
             onClick={() => deleteBooking(bookingId)}
           >
             Delete
-          </Menus.Button>
+          </Menus.Button> */}
         </Menus.List>
       </Menus.Menu>
     </Table.Row>
