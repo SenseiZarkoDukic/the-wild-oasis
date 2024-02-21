@@ -1,5 +1,5 @@
 function Checkin() {
-  return <div></div>;
+  return <div>Check in</div>;
 }
 
 export default Checkin;
