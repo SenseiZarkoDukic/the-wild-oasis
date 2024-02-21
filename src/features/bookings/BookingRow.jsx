@@ -98,12 +98,14 @@ function BookingRow({
             See details
           </Menus.Button>
 
-          <Menus.Button
-            icon={<HiArrowDownOnSquare />}
-            onClick={() => navigate(`../checkin/${bookingId}`)}
-          >
-            Check in
-          </Menus.Button>
+          {status === "unconfirmed" && (
+            <Menus.Button
+              icon={<HiArrowDownOnSquare />}
+              onClick={() => navigate(`../checkin/${bookingId}`)}
+            >
+              Check in
+            </Menus.Button>
+          )}
           {/* <Menus.Button
             icon={<HiTrash />}
             onClick={() => deleteBooking(bookingId)}
