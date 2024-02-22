@@ -41,12 +41,15 @@ function CheckinBooking() {
     numNights,
   } = booking || {};
   const moveBack = useMoveBack();
-  if (!guests) return null;
 
+  const { checkin, isCheckingIn } = useCheckin();
+
+  if (!guests) return null;
   console.log(guests);
 
   function handleCheckin() {
-    useCheckin(bookingId);
+    if (!confirmPaid) return;
+    checkin(bookingId);
   }
   if (isLoading) return <Spinner />;
 
@@ -62,7 +65,7 @@ function CheckinBooking() {
         <Checkbox
           checked={confirmPaid}
           onChange={() => setConfirmPaid((confirm) => !confirm)}
-          disabled={confirmPaid}
+          disabled={confirmPaid || isCheckingIn}
           id="confirm"
         >
           I confirm that {guests.fullName} has paid the total amount of{" "}
@@ -71,7 +74,7 @@ function CheckinBooking() {
       </Box>
 
       <ButtonGroup>
-        <Button onClick={handleCheckin} disabled={!confirmPaid}>
+        <Button onClick={handleCheckin} disabled={!confirmPaid || isCheckingIn}>
           Check in booking #{bookingId}
         </Button>
         <Button $variation="secondary" onClick={moveBack}>
