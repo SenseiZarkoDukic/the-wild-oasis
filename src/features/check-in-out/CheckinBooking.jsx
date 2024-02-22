@@ -13,6 +13,7 @@ import Spinner from "../../ui/Spinner";
 import { useEffect, useState } from "react";
 import Checkbox from "../../ui/Checkbox";
 import { formatCurrency } from "../../utils/helpers";
+import { useCheckin } from "./useCheckin";
 
 const Box = styled.div`
   /* Box */
@@ -44,8 +45,8 @@ function CheckinBooking() {
 
   console.log(guests);
 
-  function handleCheckin(bookingId) {
-    alert(`Checking in booking #${bookingId}`);
+  function handleCheckin() {
+    useCheckin(bookingId);
   }
   if (isLoading) return <Spinner />;
 
