@@ -38,10 +38,11 @@ function CheckinBooking() {
     hasBreakfast,
     numNights,
   } = booking || {};
+  const moveBack = useMoveBack();
+  if (!guests) return null;
 
   console.log(guests);
 
-  const moveBack = useMoveBack();
   function handleCheckin(bookingId) {
     alert(`Checking in booking #${bookingId}`);
   }
@@ -59,6 +60,8 @@ function CheckinBooking() {
         <Checkbox
           checked={confirmPaid}
           onChange={() => setConfirmPaid((confirm) => !confirm)}
+          disabled={confirmPaid}
+          id="confirm"
         >
           I confirm that {guests.fullName} has paid the total amount
         </Checkbox>
