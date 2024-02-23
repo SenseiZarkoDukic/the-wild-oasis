@@ -30,6 +30,17 @@ export async function getBookings({ filter, sortBy, page }) {
     query = query.range(from, to);
   }
 
+  if (page) {
+    const totalItems = await supabase
+      .from("bookings")
+      .select("id", { count: "exact" });
+    const totalPages = Math.ceil(totalItems.count / PAGE_SIZE);
+
+    if (page > totalPages) {
+      throw new Error("Page does not exist");
+    }
+  }
+
   const { data, error, count } = await query;
 
   if (error) {
