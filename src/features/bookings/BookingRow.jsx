@@ -16,6 +16,7 @@ import {
   HiTrash,
 } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
+import { useCheckout } from "../check-in-out/useCheckout";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -59,6 +60,9 @@ function BookingRow({
   },
 }) {
   const navigate = useNavigate();
+
+  const { checkOut, isCheckingOut } = useCheckout();
+
   const guestName = guests?.fullName;
   const email = guests?.email;
 
@@ -117,7 +121,7 @@ function BookingRow({
             <Menus.Button
               icon={<HiArrowUpOnSquare />}
               onClick={() => {
-                console.log("checked out");
+                checkOut(bookingId);
               }}
             >
               Check out
