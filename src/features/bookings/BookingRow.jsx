@@ -123,6 +123,7 @@ function BookingRow({
               onClick={() => {
                 checkOut(bookingId);
               }}
+              disabled={isCheckingOut}
             >
               Check out
             </Menus.Button>
