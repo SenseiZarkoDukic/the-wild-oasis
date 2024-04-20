@@ -61,7 +61,7 @@ function BookingRow({
 }) {
   const navigate = useNavigate();
 
-  const { checkOut, isCheckingOut } = useCheckout();
+  const { checkout, isCheckingOut } = useCheckout();
 
   const guestName = guests?.fullName;
   const email = guests?.email;
@@ -121,7 +121,7 @@ function BookingRow({
             <Menus.Button
               icon={<HiArrowUpOnSquare />}
               onClick={() => {
-                checkOut(bookingId);
+                checkout(bookingId);
               }}
               disabled={isCheckingOut}
             >
