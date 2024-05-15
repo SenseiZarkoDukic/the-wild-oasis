@@ -15,7 +15,8 @@ import {
 } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { useCheckout } from "../check-in-out/useCheckout";
-import { deleteBooking } from "../../services/apiBookings";
+
+import { useDeleteBooking } from "./useDeleteBooking";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -59,7 +60,7 @@ function BookingRow({
   },
 }) {
   const navigate = useNavigate();
-
+  const { isDeleting, deleteBooking } = useDeleteBooking();
   const { checkout, isCheckingOut } = useCheckout();
 
   const guestName = guests?.fullName;
