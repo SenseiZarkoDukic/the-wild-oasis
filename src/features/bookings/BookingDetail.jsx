@@ -15,6 +15,7 @@ import Spinner from "../../ui/Spinner";
 import { useNavigate } from "react-router-dom";
 import { HiArrowUpOnSquare } from "react-icons/hi2";
 import { useCheckout } from "../check-in-out/useCheckout";
+import { deleteBooking } from "../../services/apiBookings";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -50,6 +51,15 @@ function BookingDetail() {
       <BookingDataBox booking={booking} />
 
       <ButtonGroup>
+        <Button
+          $variation="danger"
+          onClick={() => {
+            deleteBooking(bookingId);
+            moveBack();
+          }}
+        >
+          Delete Booking
+        </Button>
         {status === "unconfirmed" && (
           <Button onClick={() => navigate(`../checkin/${bookingId}`)}>
             Check in

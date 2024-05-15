@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
-
+import Modal from "../../ui/Modal";
 import Tag from "../../ui/Tag";
 import Table from "../../ui/Table";
 
@@ -97,45 +97,48 @@ function BookingRow({
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
 
-      <Menus.Menu>
-        <Menus.Toggle id={bookingId} />
-        <Menus.List id={bookingId}>
-          <Menus.Button
-            icon={<HiEye />}
-            onClick={() => navigate(`../bookings/${bookingId}`)}
-          >
-            See details
-          </Menus.Button>
-
-          {status === "unconfirmed" && (
+      <Modal>
+        <Menus.Menu>
+          <Menus.Toggle id={bookingId} />
+          <Menus.List id={bookingId}>
             <Menus.Button
-              icon={<HiArrowDownOnSquare />}
-              onClick={() => navigate(`/checkin/${bookingId}`)}
-              disabled={isCheckingOut}
+              icon={<HiEye />}
+              onClick={() => navigate(`../bookings/${bookingId}`)}
             >
-              Check in
+              See details
             </Menus.Button>
-          )}
 
-          {status === "checked-in" && (
+            {status === "unconfirmed" && (
+              <Menus.Button
+                icon={<HiArrowDownOnSquare />}
+                onClick={() => navigate(`/checkin/${bookingId}`)}
+                disabled={isCheckingOut}
+              >
+                Check in
+              </Menus.Button>
+            )}
+
+            {status === "checked-in" && (
+              <Menus.Button
+                icon={<HiArrowUpOnSquare />}
+                onClick={() => {
+                  checkout(bookingId);
+                }}
+                disabled={isCheckingOut}
+              >
+                Check out
+              </Menus.Button>
+            )}
             <Menus.Button
-              icon={<HiArrowUpOnSquare />}
-              onClick={() => {
-                checkout(bookingId);
-              }}
-              disabled={isCheckingOut}
+              icon={<HiTrash />}
+              onClick={() => deleteBooking(bookingId)}
+              disabled={isDeleting}
             >
-              Check out
+              Delete
             </Menus.Button>
-          )}
-          <Menus.Button
-            icon={<HiTrash />}
-            onClick={() => deleteBooking(bookingId)}
-          >
-            Delete
-          </Menus.Button>
-        </Menus.List>
-      </Menus.Menu>
+          </Menus.List>
+        </Menus.Menu>
+      </Modal>
     </Table.Row>
   );
 }
