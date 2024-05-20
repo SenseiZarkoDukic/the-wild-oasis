@@ -11,10 +11,11 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit(formData) {
-    console.log(formData);
+  function handleSubmit(e) {
+    e.preventDefault();
     // Call the login function here
-    login(email, password);
+    if (!email || !password) return;
+    login({ email, password });
     navigate("/dashboard");
   }
 
