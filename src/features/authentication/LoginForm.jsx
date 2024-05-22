@@ -3,19 +3,23 @@ import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
-import { login } from "../../services/apiAuth";
+
 import { useNavigate } from "react-router-dom";
+import { useLogin } from "./useLogin";
 
 function LoginForm() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("zarko@example.com");
-  const [password, setPassword] = useState("zarko@28101982");
+  const [password, setPassword] = useState("zarko@1982");
+  const { login, isLoading } = useLogin();
 
   function handleSubmit(e) {
     e.preventDefault();
     // Call the login function here
     if (!email || !password) return;
+    login({ email, password });
   }
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <Form onSubmit={handleSubmit}>
