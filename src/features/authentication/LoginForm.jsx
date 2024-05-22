@@ -3,23 +3,22 @@ import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
+import SpinnerMini from "../../ui/SpinnerMini";
 
-import { useNavigate } from "react-router-dom";
 import { useLogin } from "./useLogin";
 
 function LoginForm() {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("zarko@example.com");
   const [password, setPassword] = useState("zarko@1982");
-  const { login, isLoading } = useLogin();
+  const { login, isPending } = useLogin();
 
   function handleSubmit(e) {
     e.preventDefault();
     // Call the login function here
     if (!email || !password) return;
     login({ email, password });
+    console.log(isPending);
   }
-  if (isLoading) return <p>Loading...</p>;
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -31,6 +30,7 @@ function LoginForm() {
           autoComplete="username"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={isPending}
         />
       </FormRowVertical>
       <FormRowVertical label="Password">
@@ -40,10 +40,13 @@ function LoginForm() {
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={isPending}
         />
       </FormRowVertical>
       <FormRowVertical>
-        <Button size="large">Login</Button>
+        <Button size="large" disabled={isPending}>
+          {!isPending ? "Log in" : <SpinnerMini />}
+        </Button>
       </FormRowVertical>
     </Form>
   );
