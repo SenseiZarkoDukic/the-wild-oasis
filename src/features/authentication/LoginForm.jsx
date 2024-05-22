@@ -15,8 +15,6 @@ function LoginForm() {
     e.preventDefault();
     // Call the login function here
     if (!email || !password) return;
-    login({ email, password });
-    navigate("/dashboard");
   }
 
   return (
