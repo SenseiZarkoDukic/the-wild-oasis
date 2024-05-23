@@ -16,7 +16,15 @@ function LoginForm() {
     e.preventDefault();
     // Call the login function here
     if (!email || !password) return;
-    login({ email, password });
+    login(
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail("");
+          setPassword("");
+        },
+      }
+    );
   }
 
   return (
