@@ -12,7 +12,7 @@ export function useLogin() {
       // Invalidate the user query to refetch the user data
       queryClient.setQueriesData(["user"], user);
       // Redirect to the dashboard
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     },
     onError: (error) => {
       // Show an error message
