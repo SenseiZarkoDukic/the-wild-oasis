@@ -10,7 +10,7 @@ export function useLogin() {
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: (user) => {
       // Invalidate the user query to refetch the user data
-      queryClient.setQueriesData(["user"], user);
+      queryClient.setQueryData(["user"], user.user);
 
       // Redirect to the dashboard
       navigate("/dashboard", { replace: true });
