@@ -11,6 +11,7 @@ export function useLogin() {
     onSuccess: (user) => {
       // Invalidate the user query to refetch the user data
       queryClient.setQueriesData(["user"], user);
+
       // Redirect to the dashboard
       navigate("/dashboard", { replace: true });
     },
