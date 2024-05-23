@@ -17,7 +17,6 @@ function LoginForm() {
     // Call the login function here
     if (!email || !password) return;
     login({ email, password });
-    console.log(isPending);
   }
 
   return (
