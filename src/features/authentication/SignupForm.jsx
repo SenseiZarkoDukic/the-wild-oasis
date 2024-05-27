@@ -11,11 +11,7 @@ function SignupForm() {
   const { errors } = formState;
 
   function onSubmit(data) {
-    if (errors) {
-      console.log("Errors:", errors);
-    } else {
-      console.log("Data:", data);
-    }
+    console.log(data);
   }
 
   return (
@@ -74,7 +70,7 @@ function SignupForm() {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button $variation="secondary" type="reset">
           Cancel
         </Button>
         <Button>Create new user</Button>
