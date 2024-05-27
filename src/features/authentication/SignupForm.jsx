@@ -38,7 +38,13 @@ function SignupForm() {
         <Input
           type="password"
           id="password"
-          {...register("password", { required: "This field is required" })}
+          {...register("password", {
+            required: "This field is required",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters long",
+            },
+          })}
         />
       </FormRow>
 
@@ -48,6 +54,9 @@ function SignupForm() {
           id="passwordConfirm"
           {...register("passwordConfirm", {
             required: "This field is required",
+            validate: (value) => {
+              return value === formState.password || "Passwords do not match";
+            },
           })}
         />
       </FormRow>
