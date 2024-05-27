@@ -1,3 +1,4 @@
+import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
@@ -6,10 +7,17 @@ import Input from "../../ui/Input";
 // Email regex: /\S+@\S+\.\S+/
 
 function SignupForm() {
+  const { register, formState } = useForm();
+  const { errors } = formState;
+
   return (
     <Form>
       <FormRow label="Full name" error={""}>
-        <Input type="text" id="fullName" />
+        <Input
+          type="text"
+          id="fullName"
+          {...register("fullName", { required: "This field is required" })}
+        />
       </FormRow>
 
       <FormRow label="Email address" error={""}>
