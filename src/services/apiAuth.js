@@ -5,8 +5,7 @@ export async function signUp({ fullName, email, password }) {
     email,
     password,
     options: {
-      data: { fullName },
-      avatar: "",
+      data: { fullName, avatar: "" },
     },
   });
   if (error) throw new Error(error.message);

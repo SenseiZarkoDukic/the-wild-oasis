@@ -23,7 +23,7 @@ const Avatar = styled.img`
 
 function UserAvatar() {
   const { user } = useUser();
-  // console.log(user);
+  console.log(user);
   const { fullName, avatar } = user.user_metadata;
 
   console.log(fullName, avatar);
@@ -31,7 +31,7 @@ function UserAvatar() {
   return (
     <StyledUserAvatar>
       <Avatar
-        src="https://randomuser.me/api/port...0&noinfo"
+        // src="https://randomuser.me/api/port...0&noinfo"
         alt="User avatar"
       />
       <span>John Doe</span>
