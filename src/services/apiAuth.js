@@ -43,3 +43,11 @@ export async function logout() {
   const { error } = await supabase.auth.signOut();
   if (error) throw new Error(error.message);
 }
+
+export async function updateCurrentUser({ password, fullName, avatar }) {
+  // 1. Update password OR fullName
+
+  const { data, error } = await supabase.auth.updateUser({});
+  // 2. Upload the avatar image
+  // 3. Update avatar in he user
+}
