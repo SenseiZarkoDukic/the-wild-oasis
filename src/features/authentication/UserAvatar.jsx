@@ -30,10 +30,7 @@ function UserAvatar() {
 
   return (
     <StyledUserAvatar>
-      <Avatar
-        // src="https://randomuser.me/api/port...0&noinfo"
-        alt="User avatar"
-      />
+      <Avatar src={avatar} alt="User avatar" />
       <span>John Doe</span>
     </StyledUserAvatar>
   );
