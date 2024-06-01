@@ -26,7 +26,15 @@ function UpdateUserDataForm() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!fullName) return;
-    updateUser({ fullName, avatar });
+    updateUser(
+      { fullName, avatar }, // 1. Pass the avatar image to the updateUser mutation
+      {
+        onSuccess: () => {
+          setAvatar(null); // 2. Add an onSuccess callback to clear the avatar input
+          e.target.reset();
+        }, // 2. Add an onSuccess callback to clear the avatar input
+      }
+    );
   }
 
   return (
