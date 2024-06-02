@@ -37,6 +37,10 @@ function UpdateUserDataForm() {
     );
   }
 
+  function handleCancel() {
+    setFullName(currentFullName);
+  }
+
   return (
     <Form onSubmit={handleSubmit}>
       <FormRow label="Email address">
