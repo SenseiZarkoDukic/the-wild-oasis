@@ -5,6 +5,7 @@ const DarkModeContext = createContext();
 
 const DarkModeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useLocalStorageState(false, "isDarkMode");
+
   function toggleDarkMode() {
     setIsDarkMode((isDark) => !isDark);
   }
@@ -17,7 +18,7 @@ const DarkModeProvider = ({ children }) => {
 
 function useDarkMode() {
   const context = useContext(DarkModeContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error("DarkModeContext was used outside of DarkModeProvider");
   }
   return context;
