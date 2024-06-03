@@ -14,7 +14,7 @@ export function useRecentBookings() {
 
   const { isPending, data: bookings } = useQuery({
     queryFn: () => getBookingsAfterDate(queryDate),
-    queryKey: () => ["bookings", `last-${numDays}`],
+    queryKey: ["bookings", `last-${numDays}`],
   });
 
   return { isPending, bookings };
