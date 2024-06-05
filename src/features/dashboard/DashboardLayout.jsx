@@ -28,10 +28,6 @@ function DashboardLayout() {
     return <Spinner />;
   }
 
-  console.log(bookings);
-
-  console.log(stays, confirmedStays);
-
   return (
     <StyledDashboardLayout>
       <Stats
