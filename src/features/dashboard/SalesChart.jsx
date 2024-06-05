@@ -82,8 +82,8 @@ function SalesChart() {
           <Area
             dataKey="totalSales"
             type="monotone"
-            stroke="red"
-            fill="orange"
+            stroke={colors.totalSales.stroke}
+            fill={colors.totalSales.fill}
           />
         </AreaChart>
       </ResponsiveContainer>
