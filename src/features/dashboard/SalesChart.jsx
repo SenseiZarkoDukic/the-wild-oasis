@@ -11,6 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import { useDarkMode } from "../../context/DarkModeContext";
+import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
@@ -54,9 +55,44 @@ const fakeData = [
   { label: "Feb 06", totalSales: 1450, extrasSales: 400 },
 ];
 
-function SalesChart() {
+function SalesChart({ bookings, numDays }) {
   const { isDarkMode } = useDarkMode();
 
+  const allDates = eachDayOfInterval({
+    start: subDays(new Date(), numDays),
+    end: new Date(),
+  });
+  console.log(allDates);
+
+  const data = allDates.map((date) => {
+    return {
+      label: format(date, "MMM dd"),
+      totalSales: bookings
+        .filter((booking) => isSameDay(date, new Date(booking.created_at)))
+        .reduce((acc, cur) => acc + cur.totalPrice, 0),
+      extrasSales: bookings
+        .filter((booking) => isSameDay(date, new Date(booking.created_at)))
+        .reduce((acc, cur) => acc + cur.extrasPrice, 0),
+    };
+
+    // const formattedDate = date.toLocaleDateString("en-US", {
+    //   month: "short",
+    //   day: "2-digit",
+    // });
+    // const totalSales = bookings
+    //   .filter(
+    //     (booking) =>
+    //       booking.created_at.split("T")[0] === date.toISOString().split("T")[0]
+    //   )
+    //   .reduce((acc, booking) => acc + booking.totalPrice, 0);
+    // const extrasSales = bookings
+    //   .filter(
+    //     (booking) =>
+    //       booking.created_at.split("T")[0] === date.toISOString().split("T")[0]
+    //   )
+    //   .reduce((acc, booking) => acc + booking.extrasPrice, 0);
+    // return { label: formattedDate, totalSales, extrasSales };
+  });
   const colors = isDarkMode
     ? {
         totalSales: { stroke: "#4f46e5", fill: "#4f46e5" },
@@ -74,7 +110,7 @@ function SalesChart() {
     <StyledSalesChart>
       <Heading as="h2">Sales</Heading>
       <ResponsiveContainer width="100%" height={250}>
-        <AreaChart data={fakeData}>
+        <AreaChart data={data}>
           <XAxis
             dataKey="label"
             tick={{ fill: colors.text }}
