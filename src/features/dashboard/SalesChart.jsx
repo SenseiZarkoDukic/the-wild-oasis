@@ -75,10 +75,18 @@ function SalesChart() {
       <Heading as="h2">Sales</Heading>
       <ResponsiveContainer width="100%" height={250}>
         <AreaChart data={fakeData}>
-          <XAxis dataKey="label" />
-          <YAxis unit="$" />
+          <XAxis
+            dataKey="label"
+            tick={{ fill: colors.text }}
+            tickLine={{ stroke: colors.text }}
+          />
+          <YAxis
+            unit="$"
+            tick={{ fill: colors.text }}
+            tickLine={{ stroke: colors.text }}
+          />
           <CartesianGrid strokeDasharray="4" />
-          <Tooltip />
+          <Tooltip contentStyle={{ backgroundColor: colors.background }} />
           <Area
             dataKey="totalSales"
             type="monotone"
