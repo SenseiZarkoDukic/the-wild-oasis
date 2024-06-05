@@ -92,6 +92,9 @@ function SalesChart() {
             type="monotone"
             stroke={colors.totalSales.stroke}
             fill={colors.totalSales.fill}
+            strokeWidth={2}
+            name="Total Sales"
+            unit="$"
           />
         </AreaChart>
       </ResponsiveContainer>
