@@ -145,8 +145,11 @@ function DurationChart({ confirmedStays }) {
             nameKey="duration"
             cx="50%"
             cy="50%"
+            innerRadius={40}
             outerRadius={80}
-            fill="#8884d8"
+            fill={startDataLight?.map((obj) =>
+              obj.value ? obj.color : obj.color
+            )}
             label
           />
         </PieChart>
