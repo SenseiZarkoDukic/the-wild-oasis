@@ -21,22 +21,22 @@ const ChartBox = styled.div`
 const startDataLight = [
   {
     duration: "1 night",
-    value: 0,
+    value: 3,
     color: "#ef4444",
   },
   {
     duration: "2 nights",
-    value: 0,
+    value: 5,
     color: "#f97316",
   },
   {
     duration: "3 nights",
-    value: 0,
+    value: 4,
     color: "#eab308",
   },
   {
     duration: "4-5 nights",
-    value: 0,
+    value: 7,
     color: "#84cc16",
   },
   {
@@ -46,7 +46,7 @@ const startDataLight = [
   },
   {
     duration: "8-14 nights",
-    value: 0,
+    value: 2,
     color: "#14b8a6",
   },
   {
@@ -130,3 +130,9 @@ function prepareData(startData, stays) {
 
   return data;
 }
+
+function DurationChart({ confirmedStays }) {
+  return <div></div>;
+}
+
+export default DurationChart;
