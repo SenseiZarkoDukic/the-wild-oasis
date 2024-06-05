@@ -132,7 +132,7 @@ function prepareData(startData, stays) {
 }
 
 function DurationChart({ confirmedStays }) {
-  return <div></div>;
+  return <ChartBox>Chart</ChartBox>;
 }
 
 export default DurationChart;
