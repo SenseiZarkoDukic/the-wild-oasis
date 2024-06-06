@@ -143,10 +143,10 @@ function DurationChart({ confirmedStays }) {
             data={prepareData(startDataLight, confirmedStays)}
             dataKey="value"
             nameKey="duration"
-            cx="50%"
+            cx="40%"
             cy="50%"
-            innerRadius={40}
-            outerRadius={80}
+            innerRadius={85}
+            outerRadius={110}
             fill={startDataLight?.map((obj) =>
               obj.value ? obj.color : obj.color
             )}
