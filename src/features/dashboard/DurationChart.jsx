@@ -147,6 +147,7 @@ function DurationChart({ confirmedStays }) {
             cy="50%"
             innerRadius={85}
             outerRadius={110}
+            paddingAngle={10}
             fill={startDataLight?.map((obj) =>
               obj.value ? obj.color : obj.color
             )}
