@@ -1,4 +1,11 @@
-import { Pie, PieChart, ResponsiveContainer } from "recharts";
+import {
+  Cell,
+  Legend,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
 import styled from "styled-components";
 import Heading from "../../ui/Heading";
 
@@ -137,10 +144,10 @@ function DurationChart({ confirmedStays }) {
   return (
     <ChartBox>
       <Heading as="h2">Stay durations</Heading>
-      <ResponsiveContainer width="100%" height={250}>
-        <PieChart width={400} height={400}>
+      <ResponsiveContainer width="100%" height={240}>
+        <PieChart>
           <Pie
-            data={prepareData(startDataLight, confirmedStays)}
+            data={startDataLight}
             dataKey="value"
             nameKey="duration"
             cx="40%"
@@ -148,10 +155,24 @@ function DurationChart({ confirmedStays }) {
             innerRadius={85}
             outerRadius={110}
             paddingAngle={10}
-            fill={startDataLight?.map((obj) =>
-              obj.value ? obj.color : obj.color
-            )}
             label
+          >
+            {startDataLight.map((entry) => (
+              <Cell
+                key={entry.duration}
+                fill={entry.color}
+                stroke={entry.color}
+              />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend
+            verticalAlign="middle"
+            align="right"
+            width="30%"
+            layout="vertical"
+            iconSize={15}
+            iconType="circle"
           />
         </PieChart>
       </ResponsiveContainer>
