@@ -47,8 +47,8 @@ function TodayActivity() {
         <Heading as="h2">Today</Heading>
       </Row>
 
-      {isPending ? (
-        activities.length > 0 ? (
+      {!isPending ? (
+        activities?.length > 0 ? (
           <TodayList>
             {activities.map((activity) => (
               <TodayItem key={activity.id} activity={activity} />
