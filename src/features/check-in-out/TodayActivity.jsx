@@ -4,6 +4,7 @@ import Heading from "../../ui/Heading";
 import Row from "../../ui/Row";
 import { useTodayActivity } from "./useTodayActivity";
 import Spinner from "../../ui/Spinner";
+import TodayItem from "./TodayItem";
 
 const StyledToday = styled.div`
   /* Box */
@@ -48,7 +49,11 @@ function TodayActivity() {
 
       {isPending ? (
         activities.length > 0 ? (
-          <TodayList></TodayList>
+          <TodayList>
+            {activities.map((activity) => (
+              <TodayItem key={activity.id} activity={activity} />
+            ))}
+          </TodayList>
         ) : (
           <NoActivity></NoActivity>
         )
