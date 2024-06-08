@@ -30,6 +30,8 @@ function TodayItem({ activity }) {
       {status === "checked-in" && <Tag type="blue">Departing</Tag>}
 
       <Flag src={guests.countryFlag} alt={`Flaf of a ${guests.country}`} />
+      <Guest>{guests.fullName}</Guest>
+      <span>{numNights} nights</span>
     </StyledTodayItem>
   );
 }

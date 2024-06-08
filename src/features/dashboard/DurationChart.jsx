@@ -159,7 +159,6 @@ function DurationChart({ confirmedStays }) {
             innerRadius={85}
             outerRadius={110}
             paddingAngle={10}
-            label
           >
             {data.map((entry) => (
               <Cell
