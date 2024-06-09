@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Heading from "./Heading";
 
 const StyledErrorFallback = styled.main`
   height: 100vh;
@@ -32,10 +33,11 @@ const Box = styled.div`
 
 function ErrorFallback({ error }) {
   return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre style={{ color: "red" }}>{error.message}</pre>
-    </div>
+    <StyledErrorFallback>
+      <Box>
+        <Heading as="h1">Oops! Something went wrong 😔</Heading>
+      </Box>
+    </StyledErrorFallback>
   );
 }
 
